@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Divya Jyoti — Data Scientist specializing in NLP, clustering, LLM APIs, and marketing analytics."/>
+<title>Divya Jyoti — Data Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080c14;
+  --surface:#0e1421;
+  --card:#131929;
+  --border:#1e2d45;
+  --border2:#253550;
+  --accent:#4f8ef7;
+  --accent2:#7c5cfc;
+  --green:#2dd4a0;
+  --pink:#f472b6;
+  --yellow:#f5c842;
+  --text:#e8edf5;
+  --muted:#6b7fa3;
+  --mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,12,20,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:500;text-decoration:none}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);font-size:13px;text-decoration:none;transition:color 0.2s;font-weight:500}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--accent);color:#fff;font-size:12px;font-weight:600;padding:7px 16px;border-radius:6px;text-decoration:none;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.85}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 5% 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(79,142,247,0.08) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(124,92,252,0.06) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-eyebrow{font-family:var(--mono);font-size:12px;color:var(--green);letter-spacing:2px;margin-bottom:16px;opacity:0;animation:fadeUp 0.6s 0.2s forwards}
+.hero-name{font-size:clamp(38px,5vw,62px);font-weight:700;line-height:1.1;margin-bottom:12px;opacity:0;animation:fadeUp 0.6s 0.35s forwards}
+.hero-name span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-title{font-size:18px;color:var(--muted);font-weight:400;margin-bottom:28px;opacity:0;animation:fadeUp 0.6s 0.5s forwards}
+.hero-desc{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:36px;opacity:0;animation:fadeUp 0.6s 0.65s forwards}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fadeUp 0.6s 0.8s forwards}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 20px rgba(79,142,247,0.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(79,142,247,0.4)}
+.btn-secondary{border:1px solid var(--border2);color:var(--text);padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:14px;transition:all 0.2s}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+
+/* HERO RIGHT — stat cards */
+.hero-right{opacity:0;animation:fadeUp 0.6s 0.5s forwards}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;transition:border-color 0.2s}
+.stat-card:hover{border-color:var(--border2)}
+.stat-num{font-size:28px;font-weight:700;font-family:var(--mono);color:var(--text)}
+.stat-num.blue{color:var(--accent)}
+.stat-num.purple{color:var(--accent2)}
+.stat-num.green{color:var(--green)}
+.stat-num.pink{color:var(--pink)}
+.stat-label{font-size:11px;color:var(--muted);margin-top:4px}
+.tech-row{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.tech-pill{background:var(--surface);border:1px solid var(--border);color:var(--muted);font-family:var(--mono);font-size:11px;padding:5px 12px;border-radius:20px}
+
+/* SECTION */
+section{padding:80px 5%}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.section-title{font-size:clamp(26px,3vw,36px);font-weight:700;margin-bottom:48px;line-height:1.2}
+
+/* SKILLS */
+.skills-bg{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:border-color 0.2s,transform 0.2s}
+.skill-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+.skill-icon{font-size:28px;margin-bottom:14px}
+.skill-name{font-size:15px;font-weight:600;color:var(--text);margin-bottom:10px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px}
+.skill-tag{background:rgba(79,142,247,0.1);border:1px solid rgba(79,142,247,0.2);color:var(--accent);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--mono)}
+
+/* PROJECTS */
+.projects-grid{display:grid;gap:24px}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;transition:border-color 0.2s,transform 0.2s}
+.project-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.project-badge{font-family:var(--mono);font-size:10px;color:var(--green);background:rgba(45,212,160,0.1);border:1px solid rgba(45,212,160,0.2);padding:3px 10px;border-radius:10px;margin-bottom:14px;display:inline-block}
+.project-title{font-size:20px;font-weight:700;margin-bottom:10px;color:var(--text)}
+.project-desc{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:18px}
+.project-bullets{list-style:none;margin-bottom:20px}
+.project-bullets li{font-size:13px;color:var(--muted);padding:5px 0;padding-left:18px;position:relative;line-height:1.6}
+.project-bullets li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:12px}
+.project-tools{display:flex;flex-wrap:wrap;gap:7px}
+.tool-tag{background:var(--surface);border:1px solid var(--border2);color:var(--muted);font-family:var(--mono);font-size:11px;padding:4px 12px;border-radius:6px}
+.project-visual{width:180px;flex-shrink:0}
+.project-metric{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;margin-bottom:10px}
+.metric-val{font-size:24px;font-weight:700;font-family:var(--mono);color:var(--accent)}
+.metric-label{font-size:10px;color:var(--muted);margin-top:3px}
+.project-link{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-size:13px;font-weight:500;text-decoration:none;border:1px solid rgba(79,142,247,0.3);padding:8px 16px;border-radius:8px;transition:all 0.2s;margin-top:8px}
+.project-link:hover{background:rgba(79,142,247,0.1)}
+
+/* EXPERIENCE */
+.exp-timeline{position:relative;padding-left:28px}
+.exp-timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--accent),var(--accent2),transparent)}
+.exp-item{position:relative;margin-bottom:44px}
+.exp-dot{position:absolute;left:-34px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 3px rgba(79,142,247,0.2)}
+.exp-period{font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:6px}
+.exp-role{font-size:18px;font-weight:700;color:var(--text);margin-bottom:3px}
+.exp-company{font-size:14px;color:var(--muted);margin-bottom:14px}
+.exp-bullets{list-style:none}
+.exp-bullets li{font-size:14px;color:var(--muted);padding:4px 0 4px 18px;position:relative;line-height:1.7}
+.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--accent2);font-size:11px;top:6px}
+
+/* CERTS */
+.certs-bg{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;display:flex;align-items:center;gap:14px;transition:border-color 0.2s}
+.cert-card:hover{border-color:var(--border2)}
+.cert-icon{font-size:22px;flex-shrink:0}
+.cert-name{font-size:13px;font-weight:600;color:var(--text)}
+.cert-issuer{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* CONTACT */
+.contact-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:48px;text-align:center;max-width:640px;margin:0 auto}
+.contact-title{font-size:28px;font-weight:700;margin-bottom:12px}
+.contact-sub{font-size:15px;color:var(--muted);margin-bottom:36px;line-height:1.7}
+.contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.contact-link{display:flex;align-items:center;gap:8px;padding:12px 22px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;border:1px solid var(--border2);color:var(--text);transition:all 0.2s}
+.contact-link:hover{border-color:var(--accent);color:var(--accent)}
+.contact-link.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#fff;box-shadow:0 4px 20px rgba(79,142,247,0.3)}
+.contact-link.primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(79,142,247,0.4);color:#fff}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:28px 5%;text-align:center}
+footer p{font-size:12px;color:var(--muted);font-family:var(--mono)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s,transform 0.6s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .hero-right{display:none}
+  .skills-grid{grid-template-columns:1fr}
+  .certs-grid{grid-template-columns:1fr 1fr}
+  .project-card{grid-template-columns:1fr}
+  .project-visual{display:none}
+  nav .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">divya.jyoti()</a>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="DivyaJyoti_DataScientist_Resume.docx" class="nav-cta" download>Download Resume</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">// Data Scientist & AI Engineer</div>
+      <h1 class="hero-name">Divya<br/><span>Jyoti</span></h1>
+      <div class="hero-title">NLP · Clustering · LLM APIs · Marketing Analytics</div>
+      <p class="hero-desc">
+        I build data pipelines that turn unstructured content into actionable intelligence.
+        Specializing in NLP-driven content clustering, LLM-powered analytics, and
+        end-to-end data science for marketing insights platforms.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="#contact" class="btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-num blue">200+</div>
+          <div class="stat-label">Content pieces clustered with NLP pipeline</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num purple">K=8</div>
+          <div class="stat-label">Optimal clusters via silhouette scoring</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num green">30%</div>
+          <div class="stat-label">Engagement lift tracked via KPI dashboards</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num pink">3+</div>
+          <div class="stat-label">Years in data analytics & reporting</div>
+        </div>
+      </div>
+      <div class="tech-row">
+        <span class="tech-pill">Python</span>
+        <span class="tech-pill">SQL</span>
+        <span class="tech-pill">TF-IDF</span>
+        <span class="tech-pill">K-Means</span>
+        <span class="tech-pill">Claude API</span>
+        <span class="tech-pill">Power BI</span>
+        <span class="tech-pill">AWS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-bg" id="skills">
+  <div class="section-inner">
+    <div class="section-label reveal">Technical Skills</div>
+    <h2 class="section-title reveal">What I work with</h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">🤖</div>
+        <div class="skill-name">ML & NLP</div>
+        <div class="skill-tags">
+          <span class="skill-tag">TF-IDF</span>
+          <span class="skill-tag">K-Means</span>
+          <span class="skill-tag">DBSCAN</span>
+          <span class="skill-tag">PCA</span>
+          <span class="skill-tag">Scikit-learn</span>
+          <span class="skill-tag">Embeddings</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🔗</div>
+        <div class="skill-name">LLM & APIs</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Claude API</span>
+          <span class="skill-tag">OpenAI API</span>
+          <span class="skill-tag">LangChain</span>
+          <span class="skill-tag">Prompt Eng.</span>
+          <span class="skill-tag">RAG</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🐍</div>
+        <div class="skill-name">Python Stack</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">Matplotlib</span>
+          <span class="skill-tag">Seaborn</span>
+          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">Jupyter</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-name">SQL & Data</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Window Fn.</span>
+          <span class="skill-tag">CTEs</span>
+          <span class="skill-tag">Aggregations</span>
+          <span class="skill-tag">BigQuery</span>
+          <span class="skill-tag">Pipelines</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">📊</div>
+        <div class="skill-name">Analytics & BI</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">Advanced Excel</span>
+          <span class="skill-tag">A/B Testing</span>
+          <span class="skill-tag">KPI Reporting</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">☁️</div>
+        <div class="skill-name">Cloud & Infra</div>
+        <div class="skill-tags">
+          <span class="skill-tag">AWS (Certified)</span>
+          <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">Git/GitHub</span>
+          <span class="skill-tag">Agile/Scrum</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label reveal">Portfolio</div>
+    <h2 class="section-title reveal">Projects</h2>
+
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <div class="project-card reveal">
+        <div>
+          <span class="project-badge">✦ Featured Project</span>
+          <h3 class="project-title">Marketing Content Clustering & Insights Pipeline</h3>
+          <p class="project-desc">Built an end-to-end NLP pipeline that clusters 200+ marketing content pieces by topic, tone, and engagement signal — making content searchable, comparable, and actionable across campaigns.</p>
+          <ul class="project-bullets">
+            <li>Applied TF-IDF vectorization + K-Means clustering; used silhouette scoring to determine optimal K=8</li>
+            <li>Reduced content dimensions via PCA for 2D cluster visualization and pattern discovery</li>
+            <li>Built interactive dashboard showing cluster-level engagement, click, and conversion metrics</li>
+            <li>LinkedIn content drove highest engagement (75.1 avg); Thought Leadership cluster scored 78.5</li>
+          </ul>
+          <div class="project-tools">
+            <span class="tool-tag">Python</span>
+            <span class="tool-tag">Scikit-learn</span>
+            <span class="tool-tag">TF-IDF</span>
+            <span class="tool-tag">K-Means</span>
+            <span class="tool-tag">PCA</span>
+            <span class="tool-tag">Recharts</span>
+            <span class="tool-tag">SQL</span>
+          </div>
+          <a href="MarketingClusterDashboard.jsx" class="project-link">View Live Dashboard →</a>
+        </div>
+        <div class="project-visual">
+          <div class="project-metric">
+            <div class="metric-val">78.5</div>
+            <div class="metric-label">Top cluster avg engagement</div>
+          </div>
+          <div class="project-metric">
+            <div class="metric-val" style="color:var(--green)">K=8</div>
+            <div class="metric-label">Optimal clusters found</div>
+          </div>
+          <div class="project-metric">
+            <div class="metric-val" style="color:var(--pink)">200</div>
+            <div class="metric-label">Content pieces analyzed</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card reveal">
+        <div>
+          <span class="project-badge">🔗 LLM Integration</span>
+          <h3 class="project-title">LLM-Powered SQL Agent for Natural Language Data Access</h3>
+          <p class="project-desc">Integrated Claude API to build a natural-language interface over structured datasets, allowing non-technical users to query data using plain English without writing SQL.</p>
+          <ul class="project-bullets">
+            <li>Designed prompt engineering logic to translate user questions into accurate SQL queries</li>
+            <li>Built evaluation framework to test agent output quality and identify failure modes</li>
+            <li>Iterated on prompts to improve accuracy — improved query success rate through structured testing</li>
+            <li>Exposed agent via FastAPI endpoint for team-wide access</li>
+          </ul>
+          <div class="project-tools">
+            <span class="tool-tag">Python</span>
+            <span class="tool-tag">Claude API</span>
+            <span class="tool-tag">FastAPI</span>
+            <span class="tool-tag">SQL</span>
+            <span class="tool-tag">Prompt Eng.</span>
+            <span class="tool-tag">LangChain</span>
+          </div>
+        </div>
+        <div class="project-visual">
+          <div class="project-metric">
+            <div class="metric-val" style="color:var(--accent2)">NL→SQL</div>
+            <div class="metric-label">Natural language to SQL</div>
+          </div>
+          <div class="project-metric">
+            <div class="metric-val" style="color:var(--yellow)">API</div>
+            <div class="metric-label">FastAPI deployment</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card reveal">
+        <div>
+          <span class="project-badge">📈 Analytics</span>
+          <h3 class="project-title">Fraud Detection & A/B Testing Dashboard</h3>
+          <p class="project-desc">Built a fraud detection pipeline using Python to identify suspicious transaction patterns, with A/B testing framework to validate model outputs against real business outcomes.</p>
+          <ul class="project-bullets">
+            <li>Processed financial transaction data with Python (Pandas) to detect anomalies and flag high-risk accounts</li>
+            <li>Designed A/B tests connecting model performance to operational outcomes</li>
+            <li>Built Tableau dashboard with drill-down by region, transaction type, and time period</li>
+            <li>Applied SQL aggregations and window functions to surface fraud pattern insights</li>
+          </ul>
+          <div class="project-tools">
+            <span class="tool-tag">Python</span>
+            <span class="tool-tag">Pandas</span>
+            <span class="tool-tag">SQL</span>
+            <span class="tool-tag">Tableau</span>
+            <span class="tool-tag">A/B Testing</span>
+            <span class="tool-tag">Statistics</span>
+          </div>
+        </div>
+        <div class="project-visual">
+          <div class="project-metric">
+            <div class="metric-val" style="color:var(--pink)">A/B</div>
+            <div class="metric-label">Statistical testing</div>
+          </div>
+          <div class="project-metric">
+            <div class="metric-val" style="color:var(--green)">SQL</div>
+            <div class="metric-label">Window functions + CTEs</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="skills-bg" id="experience">
+  <div class="section-inner">
+    <div class="section-label reveal">Work History</div>
+    <h2 class="section-title reveal">Experience</h2>
+    <div class="exp-timeline">
+      <div class="exp-item reveal">
+        <div class="exp-dot"></div>
+        <div class="exp-period">May 2024 – Dec 2024</div>
+        <div class="exp-role">Finance Banker — Data & Analytics Focus</div>
+        <div class="exp-company">Huntington National Bank · Traverse City, MI</div>
+        <ul class="exp-bullets">
+          <li>Analyzed client portfolio data to surface insights on product adoption and customer behavior, supporting branch-level KPI reporting</li>
+          <li>Tracked digital banking adoption metrics contributing to a 30% improvement in client digital engagement</li>
+          <li>Maintained 100% audit compliance across high-volume datasets through rigorous data validation</li>
+          <li>Communicated data-driven findings to non-technical stakeholders to support retention and sales strategy</li>
+        </ul>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-dot" style="background:var(--accent2)"></div>
+        <div class="exp-period">Aug 2015 – Feb 2016</div>
+        <div class="exp-role">Process Executive — Data Operations</div>
+        <div class="exp-company">Cognizant Technology Solutions · India</div>
+        <ul class="exp-bullets">
+          <li>Managed large-scale data intake and classification pipelines ensuring accurate, timely delivery</li>
+          <li>Designed document routing logic analogous to content processing pipeline architecture</li>
+          <li>Collaborated in Agile ceremonies to improve data workflows and team delivery throughput</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs-bg" id="certifications">
+  <div class="section-inner">
+    <div class="section-label reveal">Credentials</div>
+    <h2 class="section-title reveal">Certifications & Education</h2>
+    <div class="certs-grid reveal">
+      <div class="cert-card">
+        <div class="cert-icon">☁️</div>
+        <div>
+          <div class="cert-name">AWS Certified Developer</div>
+          <div class="cert-issuer">Amazon Web Services</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🐍</div>
+        <div>
+          <div class="cert-name">Python for Data Science</div>
+          <div class="cert-issuer">Professional Certification</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">💻</div>
+        <div>
+          <div class="cert-name">Full-Stack Web Developer</div>
+          <div class="cert-issuer">Meta</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🎓</div>
+        <div>
+          <div class="cert-name">Master of Computer Applications</div>
+          <div class="cert-issuer">Maharishi Markandeshwar University · 2015</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🎓</div>
+        <div>
+          <div class="cert-name">Bachelor of Computer Applications</div>
+          <div class="cert-issuer">Magadh University · 2010</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">⚡</div>
+        <div>
+          <div class="cert-name">Better Scrum</div>
+          <div class="cert-issuer">Stay Amazing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-card reveal">
+      <div class="section-label" style="text-align:center;margin-bottom:14px">Get In Touch</div>
+      <h2 class="contact-title">Let's work together</h2>
+      <p class="contact-sub">Open to Data Scientist and AI/ML roles. Currently building expertise in NLP, LLM integration, and marketing analytics platforms.</p>
+      <div class="contact-links">
+        <a href="mailto:divya111jyoti@gmail.com" class="contact-link primary">✉ Email Me</a>
+        <a href="https://www.linkedin.com/in/divya111" target="_blank" class="contact-link">💼 LinkedIn</a>
+        <a href="https://github.com/divyajyoti111" target="_blank" class="contact-link">🐙 GitHub</a>
+        <a href="DivyaJyoti_DataScientist_Resume.docx" download class="contact-link">📄 Resume</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Divya Jyoti · Built with intention · divyajyoti111.github.io</p>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Active nav highlight
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if(window.scrollY >= s.offsetTop - 80) current = s.id; });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#'+current ? 'var(--text)' : '';
+  });
+});
+</script>
+</body>
+</html>
